@@ -6,6 +6,12 @@
         <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/simplex/bootstrap.min.css">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        {% block page_css %}{% endblock %}
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -37,6 +43,26 @@
             </div>
         </nav>
         {% block body %}{% endblock %}
+
+        <div class="footer">
+            <div class="footer-content">
+                <b>GInfo</b> 2021 - <a href="https://alouradou.perso.centrale-marseille.fr/">Arthur Louradou</a> -
+                <a href="/about">Mentions légales</a> - <a href="">Données personnelles</a> - <a href="https://wiki.centrale-marseille.fr/ginfo/">Documentation</a>
+            </div>
+        </div>
+
+        <div id="app-notifs">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="notif" data-type="{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+
+        {% block page_js %}
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
