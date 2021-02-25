@@ -7,6 +7,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         {% block page_css %}{% endblock %}
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}" />
         <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -52,9 +53,9 @@
         </div>
 
         <div id="app-notifs">
-            {% for type, messages in app.flashes %}
+            {% for label, messages in app.flashes %}
                 {% for message in messages %}
-                    <div class="notif" data-type="{{ type }}">
+                    <div class="alert alert-{{ label }}">
                         {{ message }}
                     </div>
                 {% endfor %}
